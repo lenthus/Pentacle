@@ -33,3 +33,6 @@ Pentacle, a mail list wrapper designed to hold email clients, tied to specific u
 
 * Integration with AWS SES
 * The ability to compose emails within the App
+
+## Database Schema
+https://dbdiagram.io/d/64e6b83402bd1c4a5e4de3ae
