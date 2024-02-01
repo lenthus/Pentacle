@@ -21,6 +21,7 @@ class Email(db.Model):
 
     # user = relationship("User", back_populates="users")
     user = relationship("User", back_populates="email")
+    history = relationship("History", back_populates="email")
 
     def to_dict(self):
         return {
