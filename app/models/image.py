@@ -15,7 +15,7 @@ class Image(db.Model):
     user_id = db.Column(db.Integer(), db.ForeignKey(add_prefix_for_prod("users.id")), nullable = False)
 
     # user = relationship("User", back_populates="users")
-    user = relationship("User", back_populates="history")
+    user = relationship("User", back_populates="image")
 
 
     def to_dict(self):
