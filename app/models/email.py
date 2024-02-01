@@ -20,7 +20,7 @@ class Email(db.Model):
     contacts = db.Column(db.String, nullable = False)
 
     # user = relationship("User", back_populates="users")
-    user = relationship("User", back_populates="email")
+    user = relationship("User", back_populates="emails")
     history = relationship("History", back_populates="email")
 
     def to_dict(self):

@@ -15,7 +15,7 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
 
     contact = relationship("Contact", back_populates="user")
-    email = relationship("Email", back_populates="user")
+    emails = relationship("Email", back_populates="user", uselist=False)
     history = relationship("History", back_populates="user")
     image = relationship("Image", back_populates="user")
 

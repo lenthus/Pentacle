@@ -5,11 +5,11 @@ from sqlalchemy.sql import text
 # Adds a demo contact, you can add other contacts here if you want
 def seed_contacts():
     cont1 = Contact(
-        userId=1, email_address='test.io', firstname='testMan', lastname='tester')
+        user_id=1, email_address='test.io', firstname='testMan', lastname='tester')
     cont2 = Contact(
-         userId=2, email_address='test2.io', firstname='testMan2', lastname='tester2')
+         user_id=2, email_address='test2.io', firstname='testMan2', lastname='tester2')
     cont3 = Contact(
-         userId=3, email_address='test3.io', firstname='testMan3', lastname='tester3')
+         user_id=3, email_address='test3.io', firstname='testMan3', lastname='tester3')
 
     db.session.add(cont1)
     db.session.add(cont2)

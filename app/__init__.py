@@ -34,7 +34,7 @@ app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(contact_routes, url_prefix='/api/contacts')
 app.register_blueprint(email_routes, url_prefix='/api/emails')
-app.register_blueprint(history_routes, url_prefix='/api/historys')
+app.register_blueprint(history_routes, url_prefix='/api/history')
 app.register_blueprint(image_routes, url_prefix='/api/images')
 
 
