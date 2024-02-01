@@ -14,7 +14,7 @@ class History(db.Model):
     id = db.Column(db.Integer(), primary_key = True)
     user_id = db.Column(db.Integer(), db.ForeignKey(add_prefix_for_prod("users.id")), nullable = False)
     email_id = db.Column(db.Integer(), db.ForeignKey(add_prefix_for_prod("emails.id")), nullable = False)
-    sent_date = db.Column(db.Datetime, nullable = False)
+    sent_date = db.Column(db.Date, nullable = False)
 
     # user = relationship("User", back_populates="users")
     user = relationship("User", back_populates="history")
