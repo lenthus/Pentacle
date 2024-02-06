@@ -13,7 +13,7 @@ class Image(db.Model):
 
     id = db.Column(db.Integer(), primary_key = True)
     user_id = db.Column(db.Integer(), db.ForeignKey(add_prefix_for_prod("users.id")), nullable = False)
-
+    url = db.Column(db.String(255), nullable = False)
     # user = relationship("User", back_populates="users")
     user = relationship("User", back_populates="image")
 
