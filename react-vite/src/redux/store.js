@@ -6,9 +6,17 @@ import {
 } from "redux";
 import thunk from "redux-thunk";
 import sessionReducer from "./session";
+import historyReducer from "./history";
+import emailReducer from "./email";
+import imageReducer from "./images";
+import contactReducer from "./contact";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
+  historys: historyReducer,
+  images: imageReducer,
+  emails: emailReducer,
+  contacts: contactReducer,
 });
 
 let enhancer;
