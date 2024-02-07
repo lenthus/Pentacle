@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "./Navigation.css";
 import { useState } from "react";
 import Splash from "../Splash/splash";
+import pentacle from "../../../public/pentacle.png"
 
 
 function Navigation() {
@@ -25,11 +26,14 @@ function Navigation() {
         >As Above, So Below.</h3>
       </div>
       <div>
-      <h1 className="fa-regular fa-star fa-spin"></h1>
+      <img src={pentacle} alt="pentacle" id="pentacle"/>
       </div>
 
       <div className="Profile" >
       <NavLink to='/'>Home</NavLink>
+      <NavLink to='Email'>Email</NavLink>
+      <NavLink to='Contacts'>Contacts</NavLink>
+
       <ProfileButton className="profileButton" />
       </div>
 

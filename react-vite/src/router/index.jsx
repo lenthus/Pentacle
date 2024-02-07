@@ -4,6 +4,8 @@ import SignupFormPage from '../components/SignupFormPage';
 import Layout from './Layout';
 import Splash from '../components/Splash/splash';
 import Home from '../components/Home/Home';
+import Email from '../components/Email/Email';
+import Contacts from '../components/Contacts/Contacts';
 
 export const router = createBrowserRouter([
   {
@@ -24,6 +26,14 @@ export const router = createBrowserRouter([
       {
         path: "splash",
         element: <Splash />
+      },
+      {
+        path: "Email",
+        element: <Email />,
+      },
+      {
+        path: "Contacts",
+        element: <Contacts />
       }
     ],
   },
