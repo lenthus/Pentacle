@@ -1,5 +1,7 @@
 import React from "react";
 import "./Contacts.css"
+import OpenModalButton from "../OpenModalButton/OpenModalButton";
+import EditContactModal from "./EditContactModal";
 
 const ContactList = ({contacts,user}) =>{
 
@@ -11,9 +13,20 @@ const ContactList = ({contacts,user}) =>{
         className="ContactListBox"
         >
         <h1>Contacts for {user.username}</h1>
-        <ul>
-        {Object.values(contacts).map(contact =>(<li>{contact.firstname}</li>))}
-        </ul>
+        <ol>
+        {Object.values(contacts).map(contact =>(
+        <li key={contact.id}>Name: {`${contact.firstname} ${contact.lastname}  `}
+        <i className="fa-regular fa-envelope"></i>{ contact.email_address}
+        <OpenModalButton
+        buttonClass={"fa-regular fa-pen-to-square"}
+        // onButtonClick={handleCompleted}
+        modalComponent={<EditContactModal contact={contact}/>}
+
+        />
+        </li>
+
+        ))}
+        </ol>
         </div>
         </>
     )
