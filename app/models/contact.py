@@ -16,6 +16,7 @@ class Contact(db.Model):
     firstname = db.Column(db.String(255))
     lastname = db.Column(db.String(255))
     email_address = db.Column(db.String(255), nullable = False)
+    group = db.Column(db.String(255))
 
     # user = relationship("User", back_populates="users")
     user = relationship("User", back_populates="contact")
@@ -26,5 +27,6 @@ class Contact(db.Model):
             'userId': self.user_id,
             'firstname': self.firstname,
             'lastname': self.lastname,
-            'email_address': self.email_address
+            'email_address': self.email_address,
+            'group':self.group
         }

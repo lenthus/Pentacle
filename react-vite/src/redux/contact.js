@@ -13,8 +13,8 @@ export const getContact =(contactId)=>({
     contactId
 })
 
-export const getAllContacts = () => async (dispatch)=>{
-    const res = await fetch('/api/contacts')
+export const getAllContacts = (userId) => async (dispatch)=>{
+    const res = await fetch(`/api/contacts/${userId}`)
     // console.log(res.text(), '----------')
     if(res.ok){
         const data = await res.json()
