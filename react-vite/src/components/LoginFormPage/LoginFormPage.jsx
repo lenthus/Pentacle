@@ -30,6 +30,28 @@ function LoginFormPage() {
       navigate("/");
     }
   };
+  const handleDemoUser = async (e)=>{
+    e.preventDefault();
+    setErrors({});
+    setEmail('demo@aa.io')
+    setPassword('password')
+
+    const demoEmail = 'demo@aa.io'
+    const demoPassword = 'password'
+
+    const serverResponse = await dispatch(
+      thunkLogin({
+        'email':demoEmail,
+        'password':demoPassword,
+      })
+    );
+    if (serverResponse) {
+      setErrors(serverResponse);
+    } else {
+      navigate("/");
+    }
+  };
+
 
   return (
     <>
@@ -58,7 +80,9 @@ function LoginFormPage() {
         </label>
         {errors.password && <p>{errors.password}</p>}
         <button type="submit">Log In</button>
+
       </form>
+      <button onClick={handleDemoUser}>Demo User</button>
     </>
   );
 }

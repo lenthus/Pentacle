@@ -36,6 +36,7 @@ def upgrade():
     sa.Column('firstname', sa.String(length=255), nullable=True),
     sa.Column('lastname', sa.String(length=255), nullable=True),
     sa.Column('email_address', sa.String(length=255), nullable=False),
+    sa.Column('group', sa.String(length=255), nullable=True),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
