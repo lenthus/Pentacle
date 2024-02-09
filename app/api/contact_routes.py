@@ -47,17 +47,19 @@ def contact_update(id):
     email_address = request.json['email_address']
     group = request.json['group']
 
+
     contact.firstname = firstname
     contact.lastname = lastname
     contact.email_address = email_address
     contact.group = group
+    contact.id = id
 
     db.session.commit()
     return contact.to_dict()
 
-@contact_routes.route('/<int:id>', methods={"POST"})
+@contact_routes.route('/', methods=["POST"])
 # @login_required
-def contact_Create(id):
+def contact_Create():
     """
     Post a contact
     """

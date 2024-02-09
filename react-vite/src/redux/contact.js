@@ -4,6 +4,7 @@ const LOAD_CONTACTS = "contacts/loadContacts";
 const GET_CONTACT = "contacts/getContact";
 const UPDATE_Contact = "contacts/Update";
 const DELETE_Contact = 'contacts/Delete'
+const CREATE_Contact = 'contacts/Create'
 
 export const loadContacts = (contacts) => ({
   type: LOAD_CONTACTS,
@@ -23,6 +24,11 @@ export const deleteContact = (contact) => ({
     type: DELETE_Contact,
     contact,
   });
+
+export const createContact = (contact) => ({
+    type: CREATE_Contact,
+    contact,
+})
 
 export const getAllContacts = (userId) => async (dispatch) => {
   const res = await fetch(`/api/contacts/${userId}`);
@@ -60,6 +66,21 @@ export const updateContactMaker = (contact, contactId) => async (dispatch) => {
   }
 };
 
+export const createContactMaker = (contact) => async (dispatch) => {
+    const res = await fetch(`/api/contacts/`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(contact),
+    });
+    const data = await res.json();
+    if (res.ok) {
+      dispatch(createContact(contact));
+      return data;
+    } else {
+      throw res;
+    }
+  };
+
 export const contactDeleteFetch = (contactId) => async (dispatch) => {
     const res = await fetch(`/api/contacts/${contactId}`, {
       method: "DELETE",
@@ -94,16 +115,22 @@ const contactReducer = (state = {}, action) => {
       console.log("from updateAction",action.contact)
       return { ...contacts };
     }
+    case CREATE_Contact: {
+        const contacts = { ...state };
+        contacts[action.contact.id] = action.contact;
+        console.log("from updateAction",action.contact)
+        return { ...contacts };
+      }
+
     case DELETE_Contact:
         newState = { ...state };
         delete newState[action.contact.id];
         return { ...newState };
 
-
     case GET_CONTACT:
       newState = {};
-      // console.log("ACTION", action, 'line 55')
-      // console.log(action.bodyId, '-----store')
+    //   console.log("ACTION", action, 'line 105')
+    //   console.log(action.bodyId, '-----store')
       if (action.contactId && action.contactId !== undefined) {
         action.contactId.forEach((ele) => {
           newState[ele.id] = ele;

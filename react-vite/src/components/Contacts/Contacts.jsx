@@ -34,7 +34,7 @@ const Contacts = () => {
       <div className="ContactsBox">
         <div className="AddContactComponent">
           <AddContact user={user} contacts={contacts}/>
-          <hr className='solid'/>
+          {/* <hr className='solid'/> */}
         </div>
         <div className="ContactListComponent">
           <ContactList user={user} contacts={contacts}/>
@@ -42,7 +42,7 @@ const Contacts = () => {
         </div>
         <div className="GroupComponent">
           <Group user={user} contacts={contacts}/>
-          <hr className='solid'/>
+          {/* <hr className='solid'/> */}
         </div>
       </div>
     </>

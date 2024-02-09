@@ -33,6 +33,7 @@ const EditContactModal = ({contact}) =>{
                         lastname:lastname,
                         email_address:email_address,
                         group:group,
+                        id:contact.id
                         }
 
         dispatch(updateContactMaker(payload,contact.id))
@@ -96,11 +97,13 @@ console.log("from EditContactModal",contact)
             defaultValue={group}
             onChange={handleGroup}
         ></input>
+        <div>
         <button
         className="submitContactButton"
         type = "submit"
         onClick={handleSubmit}
         >Save Contact</button>
+        </div>
         </form>
         </div>
     )
