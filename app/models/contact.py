@@ -22,7 +22,7 @@ class Contact(db.Model):
     # user = relationship("User", back_populates="users")
     user = relationship("User", back_populates="contact")
 
-    groups = relationship("Group",secondary=members, back_populates = 'contacts')
+    groups = db.relationship("Group",secondary=members, back_populates = 'contacts')
 
     def to_dict(self):
         return {
@@ -31,5 +31,5 @@ class Contact(db.Model):
             'firstname': self.firstname,
             'lastname': self.lastname,
             'email_address': self.email_address,
-            # 'group':self.group
+            'groups':[group.to_dict() for group in self.groups]
         }

@@ -31,7 +31,7 @@ export const createContact = (contact) => ({
 })
 
 export const getAllContacts = (userId) => async (dispatch) => {
-  const res = await fetch(`/api/contacts/${userId}`);
+  const res = await fetch(`/api/contacts/user/${userId}`);
   // console.log(res.text(), '----------')
   if (res.ok) {
     const data = await res.json();

@@ -10,6 +10,7 @@ import historyReducer from "./history";
 import emailReducer from "./email";
 import imageReducer from "./images";
 import contactReducer from "./contact";
+import groupReducer from "./group";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   images: imageReducer,
   emails: emailReducer,
   contacts: contactReducer,
+  groups: groupReducer,
 });
 
 let enhancer;

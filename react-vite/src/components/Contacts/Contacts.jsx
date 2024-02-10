@@ -6,6 +6,7 @@ import "./Contacts.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getAllContacts } from "../../redux/contact";
+import { getAllGroups } from "../../redux/group";
 
 const Contacts = () => {
     const user = useSelector((state) => state.session.user);
@@ -14,6 +15,7 @@ const Contacts = () => {
     const dispatch = useDispatch()
     const userNotLogged = !user?true:false;
     const contacts = useSelector((state)=> state.contacts)
+    const groups = useSelector((state) => state.groups)
 
     useEffect(()=>{
         if(userNotLogged){
@@ -23,26 +25,25 @@ const Contacts = () => {
 
     useEffect(()=>{
         dispatch(getAllContacts(user.id))
+        .then(() => dispatch(getAllGroups(user.id)))
         .then(() => setIsLoading(false));
     },[dispatch])
-    // const passDown = {contacts}
-    console.log("from Contacts contacts",contacts)
+
     if(!isLoading){
 
   return (
     <>
       <div className="ContactsBox">
         <div className="AddContactComponent">
-          <AddContact user={user} contacts={contacts}/>
-          {/* <hr className='solid'/> */}
+          <AddContact user={user} contacts={contacts} groups={groups}/>
+
         </div>
         <div className="ContactListComponent">
-          <ContactList user={user} contacts={contacts}/>
-          {/* <hr className='solid'/> */}
+          <ContactList user={user} contacts={contacts} groups={groups}/>
+
         </div>
         <div className="GroupComponent">
-          <Group user={user} contacts={contacts}/>
-          {/* <hr className='solid'/> */}
+          <Group user={user} contacts={contacts} groups={groups}/>
         </div>
       </div>
     </>

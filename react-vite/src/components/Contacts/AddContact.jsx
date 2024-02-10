@@ -7,11 +7,11 @@ import { useModal } from "../../context/Modal";
 
 
 
-const AddContact = ({user,contacts}) =>{
+const AddContact = ({user,contacts,groups}) =>{
     const [firstname, setFirstname]= useState("")
     const [lastname, setLastname]= useState("")
     const [email_address, setEmail_address] = useState("")
-    const [group, setGroup] = useState("")
+    const [group, setGroup] = useState()
     const dispatch = useDispatch()
 
 
@@ -22,7 +22,7 @@ const AddContact = ({user,contacts}) =>{
                         firstname:firstname,
                         lastname:lastname,
                         email_address:email_address,
-                        group:group,
+                        groups:parseInt(group),
                         user_id:user.id
                         }
 
@@ -68,12 +68,12 @@ const AddContact = ({user,contacts}) =>{
         <select
         type = "dropdown"
         defaultValue=""
-        // onChange={}
+        onChange={handleGroup}
         >
-        {}
-        {/* <option value="1">Easy</option>
-        <option value="2">Medium</option>
-        <option value="3">Hard</option> */}
+        <option key='blankKey' hidden value >Select a Group</option>
+         {groups?Object.values(groups).map(group =>(
+         <option value={group.id}>{group.name}</option>
+         )):placeholder="User Has No Groups"}
         </select>
         </div>
         <div>

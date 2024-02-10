@@ -11,6 +11,7 @@ from .api.contact_routes import contact_routes
 from .api.email_routes import email_routes
 from .api.history_routes import history_routes
 from .api.images_routes import image_routes
+from .api.group_routes import group_routes
 from .seeds import seed_commands
 from .config import Config
 
@@ -36,6 +37,7 @@ app.register_blueprint(contact_routes, url_prefix='/api/contacts')
 app.register_blueprint(email_routes, url_prefix='/api/emails')
 app.register_blueprint(history_routes, url_prefix='/api/history')
 app.register_blueprint(image_routes, url_prefix='/api/images')
+app.register_blueprint(group_routes, url_prefix='/api/groups')
 
 
 db.init_app(app)

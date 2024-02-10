@@ -20,7 +20,7 @@ class Group(db.Model):
 
     # user = relationship("User", back_populates="users")
     user = relationship("User", back_populates="group")
-    
+
     contacts = relationship("Contact",
                             secondary=members,
                             back_populates = 'groups')
@@ -29,7 +29,7 @@ class Group(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
-            'userId': self.user_id,
+            'user_Id': self.user_id,
             'name': self.name,
             # 'contacts':self.contacts,
         }

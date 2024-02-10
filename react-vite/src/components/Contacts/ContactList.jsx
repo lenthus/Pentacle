@@ -3,7 +3,7 @@ import "./Contacts.css"
 import OpenModalButton from "../OpenModalButton/OpenModalButton";
 import EditContactModal from "./EditContactModal";
 
-const ContactList = ({contacts,user}) =>{
+const ContactList = ({contacts,user,groups}) =>{
 
     console.log("from Contactlist",user)
     console.log("from Contactlist",contacts)
@@ -20,8 +20,7 @@ const ContactList = ({contacts,user}) =>{
         <OpenModalButton
         buttonClass={"fa-regular fa-pen-to-square"}
         // onButtonClick={handleCompleted}
-        modalComponent={<EditContactModal contact={contact}/>}
-
+        modalComponent={<EditContactModal contact={contact} groups={groups}/>}
         />
         </li>
 
