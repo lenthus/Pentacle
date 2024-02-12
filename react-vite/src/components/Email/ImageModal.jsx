@@ -1,9 +1,14 @@
 import React from "react";
+import ImageChooser from "./ImageChooser";
+import "./Email.css"
 
 const ImageModal = () =>{
     return (
         <>
-        <div>Hello from ImageModal</div>
+        <div className="imageModalBox">
+        <ImageChooser />
+
+        </div>
         </>
     )
 }

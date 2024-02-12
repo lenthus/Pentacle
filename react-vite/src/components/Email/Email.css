@@ -19,7 +19,7 @@
     padding: 10px;
     display: flex;
     flex-wrap: wrap;
-    
+
 }
 
 .TemplateBox {
@@ -29,4 +29,9 @@
     grid-area: template;
     margin-left: 20px;
     padding: 10px;
+}
+
+.imageModalBox {
+    height: 600px;
+    width: 600px;
 }
