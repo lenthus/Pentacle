@@ -11,13 +11,10 @@ const GroupModal = ({group,groups,user}) =>{
     const [name, setName]=useState("")
     const dispatch = useDispatch()
     const groupEdit = useSelector((state) => state.groups[group]);
-    console.log("from group modal",groups)
-    console.log(groupEdit)
     const {closeModal} = useModal()
     const handleCancel = () => {
         closeModal()
     }
-    console.log("from groupModal",group)
 
     const handleDelete = (e) => {
         let check = confirm("Delete this Group?")

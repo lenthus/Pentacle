@@ -1,10 +1,19 @@
 import React from "react";
-
+import OpenModalButton from "../OpenModalButton/OpenModalButton";
+import ImageModal from "./ImageModal";
 
 const BuildMenu = () =>{
     return (
         <>
-        <div>Hello from BuildMenu</div>
+        <div>
+        <OpenModalButton
+        buttonText={"Images"}
+        modalComponent={ImageModal}
+        buttonClass={"imageModalButton"}
+        />
+        
+
+        </div>
         </>
     )
 }

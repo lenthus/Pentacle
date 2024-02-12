@@ -103,6 +103,11 @@ const contactReducer = (state = {}, action) => {
       if (action.contacts && action.contacts !== undefined) {
         action.contacts.contacts.forEach((ele) => {
           newState[ele.id] = ele;
+          const groupObj ={}
+          if (ele.groups.length >=1){
+          ele.groups.forEach((group)=> {groupObj[group.id]=group})
+          }
+          newState[ele.id].groups = groupObj
         });
       } else {
         newState = null;
@@ -112,13 +117,12 @@ const contactReducer = (state = {}, action) => {
     case UPDATE_Contact: {
       const contacts = { ...state };
       contacts[action.contact.id] = action.contact;
-      console.log("from updateAction",action.contact)
+
       return { ...contacts };
     }
     case CREATE_Contact: {
         const contacts = { ...state };
         contacts[action.contact.id] = action.contact;
-        console.log("from updateAction",action.contact)
         return { ...contacts };
       }
 
@@ -134,6 +138,11 @@ const contactReducer = (state = {}, action) => {
       if (action.contactId && action.contactId !== undefined) {
         action.contactId.forEach((ele) => {
           newState[ele.id] = ele;
+          const groupObj ={}
+          if (ele.groups.length >=1){
+          ele.groups.forEach((group)=> {groupObj[group.id]=group})
+          }
+          newState[ele.id].groups = groupObj
         });
       } else {
         newState = null;
