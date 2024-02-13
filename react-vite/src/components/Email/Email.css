@@ -29,10 +29,27 @@
     grid-area: template;
     margin-left: 20px;
     padding: 10px;
+    flex-direction: column;
 }
 
 .imageModalBox {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
+    /* width: auto;
+    height: auto; */
+    min-width: 500px;
+    min-height: 500px;
+    /* margin-top: 50px; */
+    background-color: rgb(225, 221, 221);
 }
+
+.pictureBox {
+    display: flex;
+    justify-content: space-around;
+    background-color: rgb(172, 160, 160);
+    height: 100%;
+    width: 100%;
+
+}
+

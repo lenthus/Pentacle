@@ -97,8 +97,6 @@ const ImageChooser = ({passDown}) => {
                         user_id:user.id
                         }
         let newImage = await dispatch(createImageMaker(payload))
-        // .then(() => dispatch(getAllImages(user.id)))
-        // .then(()=>setLoaded(true))
         setLogo("")
     }}
     console.log("from chooser",user)

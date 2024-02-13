@@ -1,9 +1,12 @@
 import React from "react";
 import ImageChooser from "./ImageChooser";
-import ImageGallery from "./ImageGallery";
-import OpenModalButton from "../OpenModalButton/OpenModalButton";
-import ImageWindow from "./ImageWindow";
+import "./Email.css"
+import { useSelector, useDispatch } from "react-redux";
+import { useState, useCallback, useEffect } from "react";
 import {makeStyles} from "@material-ui/core"
+import { getAllImages } from "../../redux/images";
+import { imageDeleteFetch } from "../../redux/images";
+
 
 const useStyles = makeStyles(() => ({
     labelLogo: {
@@ -51,28 +54,33 @@ const useStyles = makeStyles(() => ({
     },
   }));
 
-const Template = ({passDown}) =>{
+const ImageGallery = ({passDown}) =>{
     const classes = useStyles()
+    const dispatch = useDispatch()
+    const images = useSelector((state)=>state.images)
+    const {user, contacts, groups}=passDown
 
+    console.log("image Modal", Object.values(images))
 
-    const {user, contacts, groups, images}=passDown
     return (
         <>
-        <div>
-            <h1>Basic Newsletter Template</h1>
+        <div className="imageModalBox">
+        {/* <ImageChooser passDown={passDown}/>
+        <h2>Uploaded Images in Gallery</h2> */}
+        {Object.values(images).length>=1?Object.values(images).map(image=>{
+            <span><div className={classes.pictureContainer}>
+            <img className={classes.picture} src={image.url} alt="logo" />
+            </div></span>
+        }):null}
+        <div className="pictureBox">
+        {Object.values(images).map(image=>{
+            return(
+            <span><div className={classes.pictureContainer}>
+            <img className={classes.picture} src={image.url} alt="logo" />
+            </div></span>)})}</div>
         </div>
-        <div>
-            <h2>Please enter a Banner Image or Group Image</h2>
-            <div className="ImageWindowBox">
-            <OpenModalButton
-
-            buttonClass={"ImageWindow"}
-            modalComponent={<ImageWindow  passDown={passDown} />}
-            buttonText={"Choose Banner Image"}
-            /></div>
-            </div>
         </>
     )
 }
 
-export default Template
+export default ImageGallery

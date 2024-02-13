@@ -6,9 +6,9 @@ const BuildMenu = ({passDown}) =>{
     const {user, contacts, groups, images}=passDown
     return (
         <>
-        <div>
+        <div className="buttonContainer">
         <OpenModalButton
-        buttonText={"Images"}
+        buttonText={"Upload Images"}
         modalComponent={<ImageModal passDown={passDown}/>}
         buttonClass={"imageModalButton"}
         />
