@@ -46,11 +46,11 @@ const Group = ({user, contact, groups}) =>{
         <option key='blankKey' hidden value >Select a Group</option>
         {groups?Object.values(groups).map(group =>(<option value={group.id}>{group.name}</option>)):placeholder="Create a Group"}
         </select>
-        <OpenModalButton
+        {groupEdit?(<OpenModalButton
         buttonClass={"fa-regular fa-pen-to-square"}
         // onButtonClick={handleCompleted}
         modalComponent={<GroupModal group={groupEdit} groups={groups} user={user}/>}
-        />
+        />):null}
         <form
          onSubmit={handleSubmit}
         >

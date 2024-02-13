@@ -2,7 +2,8 @@ import React from "react";
 import ImageChooser from "./ImageChooser";
 
 
-const Template = () =>{
+const Template = ({passDown}) =>{
+    const {user, contacts, groups, images}=passDown
     return (
         <>
         <div>

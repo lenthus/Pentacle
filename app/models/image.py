@@ -13,7 +13,7 @@ class Image(db.Model):
 
     id = db.Column(db.Integer(), primary_key = True)
     user_id = db.Column(db.Integer(), db.ForeignKey(add_prefix_for_prod("users.id")), nullable = False)
-    url = db.Column(db.String(255), nullable = False)
+    url = db.Column(db.String(), nullable = False)
     # user = relationship("User", back_populates="users")
     user = relationship("User", back_populates="image")
 
@@ -22,4 +22,5 @@ class Image(db.Model):
         return {
             'id': self.id,
             'userId': self.user_id,
+            'url':self.url
         }

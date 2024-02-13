@@ -1,6 +1,9 @@
 import React from "react";
 import { useState, useCallback } from "react";
 import {makeStyles} from "@material-ui/core"
+import { createImageMaker } from "../../redux/images";
+import { useSelector, useDispatch } from "react-redux";
+import { getAllImages } from "../../redux/images";
 
 
 const useStyles = makeStyles(() => ({
@@ -50,10 +53,12 @@ const useStyles = makeStyles(() => ({
   }));
 
 
-const ImageChooser = () => {
+const ImageChooser = ({passDown}) => {
     const [logo, setLogo] = useState("")
-
+    const dispatch = useDispatch()
+    const {user, contacts, groups, images}=passDown
     const classes = useStyles()
+    const [loaded, setLoaded]=useState(false)
 
     const handleCreateBase64 = useCallback(async (e) =>{
         const file = e.target.files[0]
@@ -65,6 +70,7 @@ const ImageChooser = () => {
         e.preventDefault()
         setLogo(null)
     }
+
 
     const converToBase64 = (file) => {
         return new Promise ((resolve, reject)=> {
@@ -82,6 +88,20 @@ const ImageChooser = () => {
             }
         })
     }
+    const handleSave =async (e) => {
+        e.preventDefault()
+        if (logo){
+
+        const payload = {
+                        url:logo,
+                        user_id:user.id
+                        }
+        let newImage = await dispatch(createImageMaker(payload))
+        // .then(() => dispatch(getAllImages(user.id)))
+        // .then(()=>setLoaded(true))
+        setLogo("")
+    }}
+    console.log("from chooser",user)
 
     return <><div>
         <div className={classes.logoContainer}>
@@ -97,7 +117,7 @@ const ImageChooser = () => {
                 >Delete Image
                 </p></div>):null}
                 {logo?(<div className={classes.button}>
-                <p onClick={deleteImage}
+                <p onClick={handleSave}
                    className={classes.buttonText}
                 >Save Image
                 </p></div>):null}

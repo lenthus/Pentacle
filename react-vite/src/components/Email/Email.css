@@ -32,6 +32,7 @@
 }
 
 .imageModalBox {
-    height: 600px;
-    width: 600px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
 }
