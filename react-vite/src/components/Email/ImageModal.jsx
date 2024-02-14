@@ -60,7 +60,7 @@ const ImageModal = ({passDown}) =>{
     const images = useSelector((state)=>state.images)
     const {user, contacts, groups}=passDown
 
-    console.log("image Modal", Object.values(images))
+    console.log("image Modal",images)
 
     return (
         <>

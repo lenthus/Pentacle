@@ -6,6 +6,7 @@ import { useState, useCallback, useEffect } from "react";
 import {makeStyles} from "@material-ui/core"
 import { getAllImages } from "../../redux/images";
 import { imageDeleteFetch } from "../../redux/images";
+import { useModal } from "../../context/Modal";
 
 
 const useStyles = makeStyles(() => ({
@@ -37,7 +38,7 @@ const useStyles = makeStyles(() => ({
     pictureContainer: {
       height: "100px",
       background: "white",
-      width: "100px",
+      width: "200px",
       whiteSpace: "nowrap",
       overflow: "hidden",
       textOverflow: "ellipsis",
@@ -54,17 +55,21 @@ const useStyles = makeStyles(() => ({
     },
   }));
 
-const ImageGallery = ({passDown}) =>{
+const ImageGallery = ({passDown,banner, setBanner}) =>{
     const classes = useStyles()
     const dispatch = useDispatch()
     const images = useSelector((state)=>state.images)
     const {user, contacts, groups}=passDown
+    const [showImage, setShowImage] =useState("")
+    const {closeModal}=useModal()
 
-    console.log("image Modal", Object.values(images))
+
+    console.log("image Modal", images)
+
 
     return (
         <>
-        <div className="imageModalBox">
+        <div className="imageGalleryBox">
         {/* <ImageChooser passDown={passDown}/>
         <h2>Uploaded Images in Gallery</h2> */}
         {Object.values(images).length>=1?Object.values(images).map(image=>{
@@ -76,9 +81,18 @@ const ImageGallery = ({passDown}) =>{
         {Object.values(images).map(image=>{
             return(
             <span><div className={classes.pictureContainer}>
-            <img className={classes.picture} src={image.url} alt="logo" />
+            <img className={classes.picture} src={image.url} alt="logo" onClick={(e)=>{
+                setBanner(image.url)
+                setShowImage(image.url)
+                }} />
             </div></span>)})}</div>
+            <button
+            onClick={closeModal}
+            >Use Image</button>
         </div>
+        <div className={classes.pictureContainer} >
+            {showImage.length>=1?(<img className={classes.picture} src={showImage} alt="logo" />):null}
+            </div>
         </>
     )
 }
