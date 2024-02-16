@@ -1,9 +1,16 @@
 import React from "react";
 import { ColorPicker, useColor } from "react-color-palette";
-import "react-color-palette/lib/css/styles.css";
+import "react-color-palette/css";
+import { useModal } from "../../context/Modal";
 
-const ColorChooser =()=> {
+
+const ColorChooser =({bColor,setBColor})=> {
   const [color, setColor] = useColor("hex", "#00FF00");
+  const {closeModal} = useModal()
+  const handleBColor = (e) =>{setBColor(color)
+  closeModal()}
+
+
 
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
@@ -16,6 +23,10 @@ const ColorChooser =()=> {
         hideHSV
         dark
       />
+      <button
+      className="backgroundButton"
+      onClick={handleBColor}
+      >Set Color</button>
     </div>
   );
 }
