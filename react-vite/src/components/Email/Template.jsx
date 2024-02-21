@@ -105,7 +105,7 @@ const Template = ({passDown}) =>{
             buttonText={"Choose Event Image"}
             /></div>
             <div className={classes.pictureContainer} >
-            {banner.length>=1?(<img className={classes.picture} src={event} alt="logo" />):null}
+            {event.length>=1?(<img className={classes.picture} src={event} alt="logo" />):null}
         </div>
         </div>
         <div>

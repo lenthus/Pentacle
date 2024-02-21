@@ -4,10 +4,13 @@ import ImageModal from "./ImageModal";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ColorChooser from "../Contacts/ColorChooser";
+import { useColor } from "react-color-palette";
 
 
 const BuildMenu = ({passDown}) =>{
     const [groupEdit, setGroupEdit] = useState("")
+    // const [color, setColor] = useState("")
+    const [bColor, setBColor] = useColor("hex", "#00FF00");
     const {user, contacts, groups, images}=passDown
     const handleGroupEdit = (e)=> setGroupEdit(e.target.value)
     const dispatch = useDispatch()
@@ -23,7 +26,14 @@ const BuildMenu = ({passDown}) =>{
         }
         return groupMembers
     }
-    console.log("groupCount",groupCount().length)
+
+    const handleSubmit=()=> {
+        return (
+            <html><p>Test</p></html>
+        )
+    }
+
+
 
     return (
         <>
@@ -52,6 +62,17 @@ const BuildMenu = ({passDown}) =>{
         </div>
         <div>
 
+        </div>
+        <div><OpenModalButton
+        buttonText = "Choose background Color"
+        buttonClass={"backgroundButton"}
+        modalComponent={<ColorChooser bColor={bColor} setBColor={setBColor}/>}
+        />
+        </div>
+        <div>
+        <button
+        onClick={handleSubmit}
+            >Send Email</button>
         </div>
         </div>
         </>
