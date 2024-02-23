@@ -6,6 +6,7 @@ import { useState, useCallback, useEffect } from "react";
 import {makeStyles} from "@material-ui/core"
 import { getAllImages } from "../../redux/images";
 import { imageDeleteFetch } from "../../redux/images";
+import { useModal } from "../../context/Modal";
 
 
 const useStyles = makeStyles(() => ({
@@ -59,8 +60,8 @@ const ImageModal = ({passDown}) =>{
     const dispatch = useDispatch()
     const images = useSelector((state)=>state.images)
     const {user, contacts, groups}=passDown
+    const {closeModal} = useModal()
 
-    console.log("image Modal",images)
 
     return (
         <>
@@ -80,6 +81,7 @@ const ImageModal = ({passDown}) =>{
             </div><div><button
             onClick={(e)=>dispatch(imageDeleteFetch(image.id))}
             >Delete Image</button></div></span>)})}</div>
+            <button></button>
         </div>
         </>
     )

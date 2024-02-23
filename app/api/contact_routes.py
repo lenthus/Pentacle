@@ -15,7 +15,6 @@ def contacts(userId):
     Query for all habits and returns them in a list of habit dictionaries
     """
     contacts = Contact.query.filter(Contact.user_id == userId)
-    print("Line 26 of Contacts Model",contacts)
     return {'contacts': [contact.to_dict() for contact in contacts]}
 
 

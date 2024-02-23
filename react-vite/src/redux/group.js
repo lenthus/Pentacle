@@ -99,7 +99,6 @@ const groupReducer = (state = {}, action) => {
   switch (action.type) {
     case LOAD_GROUPS:
       newState = {};
-      // console.log(action.groups, '-----store')
       if (action.groups && action.groups !== undefined) {
         action.groups.groups.forEach((ele) => {
           newState[ele.id] = ele;
@@ -112,13 +111,13 @@ const groupReducer = (state = {}, action) => {
     case UPDATE_Group: {
       const groups = { ...state };
       groups[action.group.id] = action.group;
-    //   console.log("from updateAction",action.group)
+
       return { ...groups };
     }
     case CREATE_Group: {
         const groups = { ...state };
         groups[action.group.id] = action.group;
-        // console.log("from updateAction",action.group)
+
         return { ...groups };
       }
 
@@ -129,8 +128,7 @@ const groupReducer = (state = {}, action) => {
 
     case GET_GROUP:
       newState = {};
-    //   console.log("ACTION", action, 'line 105')
-    //   console.log(action.bodyId, '-----store')
+  
       if (action.groupId && action.groupId !== undefined) {
         action.groupId.forEach((ele) => {
           newState[ele.id] = ele;

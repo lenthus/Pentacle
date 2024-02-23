@@ -119,14 +119,14 @@ const Template = ({passDown}) =>{
             ></input>
 
         </div>
-        <div>
+        <div className="textArea">
         <h2>Body of Message</h2>
             <textarea
             name="body"
             onChange={handleBody}
             />
         </div>
-        <div>
+        <div className="textArea2">
         <h2>Physical Mailing Address</h2>
             <textarea
             name="address"

@@ -33,8 +33,6 @@ const BuildMenu = ({passDown}) =>{
         )
     }
 
-
-
     return (
         <>
         <div>
@@ -61,7 +59,7 @@ const BuildMenu = ({passDown}) =>{
         {groupEdit?<p>{`Current Contacts Selected: ${groupCount().length}`}</p>:null}
         </div>
         <div>
-
+        
         </div>
         <div><OpenModalButton
         buttonText = "Choose background Color"
