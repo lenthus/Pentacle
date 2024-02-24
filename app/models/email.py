@@ -19,7 +19,7 @@ class Email(db.Model):
     event = db.Column(db.String(), nullable = False)
     body = db.Column(db.String(), nullable = False)
     address = db.Column(db.String(), nullable = False)
-    group = db.Column(db.String(255), nullable = False)
+    group = db.Column(db.String(255))
     completed = db.Column(db.Boolean, nullable = False)
     contacts = db.Column(db.String, nullable = False)
 
