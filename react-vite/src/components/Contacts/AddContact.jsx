@@ -17,6 +17,7 @@ const AddContact = ({user,contacts,groups}) =>{
 
     const handleSubmit = () =>{
         // e.preventDefault()
+        if (firstname.length <=1||lastname.length <=1){alert("First and Last Name Required")}
         if (email_address.length >= 1){
         const payload = {
                         firstname:firstname,
