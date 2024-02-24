@@ -2,6 +2,7 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import ForeignKey
 from sqlalchemy.orm import relationship
 from .db import db, environment, SCHEMA, add_prefix_for_prod
+from .members import members
 
 class Contact(db.Model):
     __tablename__ = 'contacts'
@@ -16,10 +17,12 @@ class Contact(db.Model):
     firstname = db.Column(db.String(255))
     lastname = db.Column(db.String(255))
     email_address = db.Column(db.String(255), nullable = False)
-    group = db.Column(db.String(255))
+    # group = db.Column(db.Integer(), db.ForeignKey(add_prefix_for_prod("groups.id")))
 
     # user = relationship("User", back_populates="users")
     user = relationship("User", back_populates="contact")
+
+    groups = db.relationship("Group",secondary=members, back_populates = 'contacts')
 
     def to_dict(self):
         return {
@@ -28,5 +31,5 @@ class Contact(db.Model):
             'firstname': self.firstname,
             'lastname': self.lastname,
             'email_address': self.email_address,
-            'group':self.group
+            'groups':[group.to_dict() for group in self.groups]
         }

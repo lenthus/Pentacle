@@ -18,7 +18,7 @@ class User(db.Model, UserMixin):
     emails = relationship("Email", back_populates="user", uselist=False)
     history = relationship("History", back_populates="user")
     image = relationship("Image", back_populates="user")
-
+    group = relationship("Group", back_populates='user')
     @property
     def password(self):
         return self.hashed_password

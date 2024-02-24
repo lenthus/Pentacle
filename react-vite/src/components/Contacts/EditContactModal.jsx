@@ -5,15 +5,13 @@ import { updateContactMaker } from "../../redux/contact";
 import { contactDeleteFetch } from "../../redux/contact";
 import { useSelector, useDispatch } from "react-redux";
 
-
-
-const EditContactModal = ({contact}) =>{
+const EditContactModal = ({contact,groups}) =>{
     const dispatch = useDispatch()
     const {closeModal} = useModal()
     const [firstname, setFirstname]= useState(contact.firstname)
     const [lastname, setLastname]= useState(contact.lastname)
     const [email_address, setEmail_address] = useState(contact.email_address)
-    const [group, setGroup] = useState(contact.group)
+    const [groupEdit, setGroupEdit] = useState()
     const handleCancel = () => {
         closeModal()
     }
@@ -32,7 +30,7 @@ const EditContactModal = ({contact}) =>{
                         firstname:firstname,
                         lastname:lastname,
                         email_address:email_address,
-                        group:group,
+                        groups:groupEdit,
                         id:contact.id
                         }
 
@@ -47,7 +45,7 @@ const EditContactModal = ({contact}) =>{
     const handleFirstname = (e)=> setFirstname(e.target.value)
     const handleLastname = (e)=> setLastname(e.target.value)
     const handleEmail = (e)=> setEmail_address(e.target.value)
-    const handleGroup = (e)=> setGroup(e.target.value)
+    const handleGroups = (e)=> setGroupEdit(e.target.value)
 
 console.log("from EditContactModal",contact)
 
@@ -90,13 +88,17 @@ console.log("from EditContactModal",contact)
             onChange={handleEmail}
         ></input>
          <h2>What groups is this contact associated with?</h2>
-         <h2>(separate multiple groups by space)</h2>
-        <input
-            type = "text"
-            name = "Group"
-            defaultValue={group}
-            onChange={handleGroup}
-        ></input>
+         <h3>Groups</h3>
+        <select
+        type = "dropdown"
+        defaultValue=""
+        onChange={handleGroups}
+        >
+        <option key='blankKey' hidden value >Select a Group</option>
+         {groups?Object.values(groups).map(group =>(
+         <option value={group.id}>{group.name}</option>
+         )):placeholder="User Has No Groups"}
+        </select>
         <div>
         <button
         className="submitContactButton"
