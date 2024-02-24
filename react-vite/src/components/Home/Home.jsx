@@ -47,14 +47,16 @@ const Home = () =>{
     return (
         <>
         <div className="homeBox">
-            {/* <h2>Welcome {user}</h2> */}
-
+        <div className="userStats">
+            <h2>Welcome {user.username}</h2>
+            <h2>Personal User Email: {user.email}</h2>
+        </div>
         <div className="userStats">
             <h1>User Stats:</h1>
             <h4>Emails: {Object.values(emails).length}</h4>
             <h4>Groups: {Object.values(groups).length}</h4>
             <h4>Images: {Object.values(images).length}</h4>
-            <h4>Sent Emails: {Object.values(historys).length}</h4>
+            {/* <h4>Sent Emails: {Object.values(historys).length}</h4> */}
             <h4>Total Contacts: {Object.values(contacts).length}</h4>
         </div>
         <div className="quickLinks">

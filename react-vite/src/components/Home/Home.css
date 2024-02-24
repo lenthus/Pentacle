@@ -1,26 +1,38 @@
 .userStats {
     display: flex;
     flex-direction: column;
+    background-color: aliceblue;
+    border-radius: 10px;
+    padding: 10px;
 }
 
 .userStats h4 {
     font-size: 30px;
+
+
 }
 
 .quickLinks {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    background-color: aliceblue;
+    border-radius: 10px;
+    padding: 10px;
 
 }
 
 .quickLinks a {
     font-size: 20px;
     padding: 10px;
+
 }
+
 
 .homeBox {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     background-color: rgb(225, 221, 221);
+    gap: 50px;
+    min-height: auto;
 }

@@ -28,11 +28,11 @@ const BuildMenu = ({passDown}) =>{
         return groupMembers
     }
 
-    const handleSubmit=()=> {
-        return (
-            <html><p>Test</p></html>
-        )
-    }
+    // const handleSubmit=()=> {
+    //     return (
+    //         <html><p>Test</p></html>
+    //     )
+    // }
 
     return (
         <>
@@ -68,11 +68,11 @@ const BuildMenu = ({passDown}) =>{
         modalComponent={<ColorChooser bColor={bColor} setBColor={setBColor}/>}
         />
         </div>
-        <div>
+        {/* <div>
         <button
         onClick={handleSubmit}
             >Send Email</button>
-        </div>
+        </div> */}
         </div>
         </>
     )
