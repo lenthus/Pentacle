@@ -14,7 +14,11 @@ class Email(db.Model):
     id = db.Column(db.Integer(), primary_key = True)
     user_id = db.Column(db.Integer(), db.ForeignKey(add_prefix_for_prod("users.id")), nullable = False)
     title = db.Column(db.String(255), nullable = False)
-    body = db.Column(db.String(255), nullable = False)
+    sub_title = db.Column(db.String(255), nullable = False)
+    banner = db.Column(db.String(), nullable = False)
+    event = db.Column(db.String(), nullable = False)
+    body = db.Column(db.String(), nullable = False)
+    address = db.Column(db.String(), nullable = False)
     group = db.Column(db.String(255), nullable = False)
     completed = db.Column(db.Boolean, nullable = False)
     contacts = db.Column(db.String, nullable = False)
@@ -28,7 +32,9 @@ class Email(db.Model):
             'id': self.id,
             'userId': self.user_id,
             'title': self.title,
+            'sub_title': self.title,
             'body':self.body,
+            'address':self.address,
             'group': self.group,
             'completed': self.completed,
             'contacts':self.contacts

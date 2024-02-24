@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
-import {useNavigate} from 'react-router-dom'
+import {useNavigate, Navigate} from 'react-router-dom'
 import { useState, useEffect } from "react";
 import { getAllContacts } from "../../redux/contact";
 import { getAllGroups } from "../../redux/group";
@@ -9,6 +9,7 @@ import { getAllImages } from "../../redux/images";
 import { getAllEmails } from "../../redux/email";
 import { getAllHistorys } from "../../redux/history";
 import { NavLink } from "react-router-dom";
+import "./Home.css"
 
 
 
@@ -20,10 +21,17 @@ const Home = () =>{
     const contacts = useSelector((state) => state.contacts)
     const images = useSelector((state) => state.images)
     const historys = useSelector((state) => state.historys)
+    const navigate = useNavigate();
     // const user = sessionUser
     const dispatch = useDispatch()
     const [isLoading, setIsLoading] = useState(true);
+    const userNotLogged = !user?true:false;
     console.log(emails)
+    useEffect(()=>{
+        if(userNotLogged){
+        navigate('../splash')
+        }
+    },[userNotLogged])
 
 
     useEffect(()=>{
@@ -35,13 +43,13 @@ const Home = () =>{
         .then(() => setIsLoading(false));
     },[dispatch])
     // console.log(user)
-
+    if (user){
     return (
         <>
-        <div>
+        <div className="homeBox">
             {/* <h2>Welcome {user}</h2> */}
 
-        <div>
+        <div className="userStats">
             <h1>User Stats:</h1>
             <h4>Emails: {Object.values(emails).length}</h4>
             <h4>Groups: {Object.values(groups).length}</h4>
@@ -49,6 +57,7 @@ const Home = () =>{
             <h4>Sent Emails: {Object.values(historys).length}</h4>
             <h4>Total Contacts: {Object.values(contacts).length}</h4>
         </div>
+        <div className="quickLinks">
         <h1>Quick Links:</h1>
         <div>
         <NavLink to='Email'>Start A new Email</NavLink>
@@ -57,8 +66,13 @@ const Home = () =>{
         <NavLink to='Email'>Create/Edit Contacts</NavLink>
         </div>
         </div>
+        </div>
         </>
-    )
+    )}else{
+        return (
+            <div>Not signed in</div>
+        )
+    }
 }
 
 export default Home

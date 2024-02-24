@@ -17,7 +17,7 @@ const ContactList = ({contacts,user,groups}) =>{
         <div
         className="ContactListBox"
         >
-        <h1>Contacts for {user.username} by Group</h1>
+        <h1>Contacts for {user?.username} by Group</h1>
         <select
         type = "dropdown"
         defaultValue=""

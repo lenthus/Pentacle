@@ -4,12 +4,14 @@ import Group from "./Group";
 import ContactList from "./ContactList";
 import "./Contacts.css";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { getAllContacts } from "../../redux/contact";
 import { getAllGroups } from "../../redux/group";
+import {useNavigate, Navigate} from 'react-router-dom'
 
 const Contacts = () => {
     const user = useSelector((state) => state.session.user);
+    // if(!user) return <Navigate to='/Splash' replace={true}/>
     const [isLoading, setIsLoading] = useState(true);
     const navigate = useNavigate();
     const dispatch = useDispatch()

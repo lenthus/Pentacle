@@ -59,15 +59,19 @@ def email_Create():
     email = request.json
     title = email['title']
     user_id = email['user_id']
+    sub_title = email['sub_title']
+    event = email['event']
+    banner = email['banner']
+    address = email['address']
     body = request.json['body']
     group = request.json['group']
     completed = request.json['completed']
     contacts = request.json['contacts']
-    new_email = Email(title = title, user_id = user_id, body = body, completed = completed, contacts = contacts, group = group)
+    new_email = Email(title = title, user_id = user_id, body = body, completed = completed, contacts = contacts, group = group, sub_title = sub_title, banner = banner, event = event, address = address)
 
     db.session.add(new_email)
     db.session.commit()
-    return request.json
+    return new_email.to_dict()
 
 @email_routes.route('/<int:id>', methods=["DELETE"])
 @login_required

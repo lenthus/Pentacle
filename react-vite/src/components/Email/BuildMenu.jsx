@@ -8,10 +8,11 @@ import { useColor } from "react-color-palette";
 
 
 const BuildMenu = ({passDown}) =>{
-    const [groupEdit, setGroupEdit] = useState("")
+    // const [groupEdit, setGroupEdit] = useState("")
     // const [color, setColor] = useState("")
-    const [bColor, setBColor] = useColor("hex", "#00FF00");
-    const {user, contacts, groups, images}=passDown
+    // const [bColor, setBColor] = useColor("hex", "#00FF00");
+    const {user, contacts, groups, images, bColor,
+         setBColor, groupEdit, setGroupEdit}=passDown
     const handleGroupEdit = (e)=> setGroupEdit(e.target.value)
     const dispatch = useDispatch()
 
@@ -59,7 +60,7 @@ const BuildMenu = ({passDown}) =>{
         {groupEdit?<p>{`Current Contacts Selected: ${groupCount().length}`}</p>:null}
         </div>
         <div>
-        
+
         </div>
         <div><OpenModalButton
         buttonText = "Choose background Color"

@@ -9,6 +9,10 @@ import { getAllContacts } from "../../redux/contact";
 import { getAllImages } from "../../redux/images";
 // import { useState } from "react";
 import React, { useEffect, useState } from "react";
+import ColorChooser from "../Contacts/ColorChooser";
+import { useColor } from "react-color-palette";
+import {useNavigate, Navigate} from 'react-router-dom'
+
 
 
 
@@ -18,11 +22,19 @@ const Email = () =>{
     const images = useSelector((state)=>state.images)
     const contacts = useSelector((state)=> state.contacts)
     const groups = useSelector((state) => state.groups)
-
+    const [bColor, setBColor] = useColor("#f7f7f7");
+    const navigate = useNavigate();
+    const userNotLogged = !user?true:false;
     const [isLoading, setIsLoading] = useState(true);
     const dispatch = useDispatch()
+    const [groupEdit, setGroupEdit] = useState("")
 
-    const passDown = {images, user,contacts, groups}
+    const passDown = {images, user,contacts, groups, bColor, setBColor, groupEdit, setGroupEdit}
+    useEffect(()=>{
+        if(userNotLogged){
+        navigate('../splash')
+        }
+    },[userNotLogged])
 
 
     useEffect(()=>{
