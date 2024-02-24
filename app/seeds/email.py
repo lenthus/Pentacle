@@ -7,7 +7,7 @@ def seed_emails():
     cont1 = Email(
         user_id=1, body='test.io',banner = 'img.url',event = 'img.url',address = '123 here I am st. Bham Wa', contacts = "test@app.io", sub_title = 'sub title', title= "TestEmail 1", completed = False )
     cont2 = Email(
-        user_id=1, body='test2.io',banner = 'img.url',event = 'img.url',address = '123 here I am st. Bham Wa', contacts = "test2@app.io", title= "TestEmail 2", completed = False  )
+        user_id=1, body='test2.io',banner = 'img.url',event = 'img.url',address = '123 here I am st. Bham Wa', contacts = "test2@app.io",sub_title = "title sub", title= "TestEmail 2", completed = False  )
 
     db.session.add(cont1)
     db.session.add(cont2)
