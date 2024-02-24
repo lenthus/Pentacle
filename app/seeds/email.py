@@ -5,7 +5,7 @@ from sqlalchemy.sql import text
 # Adds a demo contact, you can add other contacts here if you want
 def seed_emails():
     cont1 = Email(
-        user_id=1, body='test.io',banner = 'img.url',event = 'img.url',address = '123 here I am st. Bham Wa', contacts = "test@app.io",sub_title = 'sub title' title= "TestEmail 1", group="test", completed= False )
+        user_id=1, body='test.io',banner = 'img.url',event = 'img.url',address = '123 here I am st. Bham Wa', contacts = "test@app.io", sub_title = 'sub title', title= "TestEmail 1", group="test", completed = False )
     cont2 = Email(
         user_id=1, body='test2.io',banner = 'img.url',event = 'img.url',address = '123 here I am st. Bham Wa', contacts = "test2@app.io", title= "TestEmail 2", group="test", completed = False  )
 
