@@ -6,6 +6,10 @@ import ImageWindow from "./ImageWindow";
 import {makeStyles} from "@material-ui/core"
 import { useState, useCallback, useEffect } from "react";
 import { TextareaHTMLAttributes } from "react";
+import { createEmailMaker } from "../../redux/email";
+import { useDispatch } from "react-redux";
+
+
 
 const useStyles = makeStyles(() => ({
     labelLogo: {
@@ -61,16 +65,58 @@ const Template = ({passDown}) =>{
     const [subTitle, setSubTitle]=useState("")
     const [body, setBody]=useState("")
     const [address, setAddress] = useState("")
+    const [showErrors, setShowErrors] = useState(false)
+    const dispatch = useDispatch()
+    // const errorMessage = ["Email Incomplete for Following Reasons:"]
+
+    const {user, contacts, groups, images, bColor, setBColor, groupEdit}=passDown
 
     const handleTitle = (e)=>setTitle(e.target.value)
     const handleSubTitle = (e)=>setSubTitle(e.target.value)
     const handleBody = (e)=>setBody(e.target.value)
     const handleAddress = (e)=>setAddress(e.target.value)
 
+    const handleSubmit = (e)=>{
+      setShowErrors(false)
+      handleValidate()
+      if (!showErrors){
+        const payload = {
+                        banner:banner,
+                        event:event,
+                        title:title,
+                        sub_title:subTitle,
+                        body:body,
+                        address:address,
+                        group:parseInt(groupEdit),
+                        user_id:user.id,
+                        contacts:"None",
+                        completed:true
+                        }
 
-    const {user, contacts, groups, images}=passDown
+        dispatch(createEmailMaker(payload))
+    }
+    else {
+        alert("Email Incomplete")
+    }
+    }
+    // console.log("banner",banner)
+    const handleValidate =()=> {
+
+      if (!title) setShowErrors(true)
+      if (!subTitle) setShowErrors(true)
+      if (!body) setShowErrors(true)
+      if (!banner) setShowErrors(true)
+      if (!event) setShowErrors(true)
+      if (!address) setShowErrors(true)
+      if (!groupEdit) alert("Select A Group")
+      !showErrors?true:false
+    }
+
     return (
         <>
+        <div
+        className="TemplateContainer"
+        style={{background: bColor.hex}}>
         <div>
             <h1>Basic Newsletter Template</h1>
         </div>
@@ -82,6 +128,7 @@ const Template = ({passDown}) =>{
             modalComponent={<ImageGallery  passDown={passDown} banner={banner} setBanner={setBanner} />}
             buttonText={"Choose Banner Image"}
             /></div>
+            {!banner&&showErrors?<div style={{color:'red'}}>*required</div>:null}
             <div className={classes.pictureContainer} >
             {banner.length>=1?(<img className={classes.picture} src={banner} alt="logo" />):null}
         </div>
@@ -95,6 +142,7 @@ const Template = ({passDown}) =>{
             onChange={handleTitle}
             >
             </input>
+            {!title&&showErrors?<div style={{color:'red'}}>*required</div>:null}
         </div>
         <div>
         <h2>Please enter a Event Image</h2>
@@ -104,6 +152,7 @@ const Template = ({passDown}) =>{
             modalComponent={<ImageGallery  passDown={passDown} banner={event} setBanner={setEvent} />}
             buttonText={"Choose Event Image"}
             /></div>
+            {!event&&showErrors?<div style={{color:'red'}}>*required</div>:null}
             <div className={classes.pictureContainer} >
             {event.length>=1?(<img className={classes.picture} src={event} alt="logo" />):null}
         </div>
@@ -117,10 +166,11 @@ const Template = ({passDown}) =>{
             value={subTitle}
             onChange={handleSubTitle}
             ></input>
-
+        {!subTitle&&showErrors?<div style={{color:'red'}}>*required</div>:null}
         </div>
         <div className="textArea">
         <h2>Body of Message</h2>
+        {!body&&showErrors?<div style={{color:'red'}}>*required</div>:null}
             <textarea
             name="body"
             onChange={handleBody}
@@ -128,10 +178,17 @@ const Template = ({passDown}) =>{
         </div>
         <div className="textArea2">
         <h2>Physical Mailing Address</h2>
+        {!address&&showErrors?<div style={{color:'red'}}>*required</div>:null}
             <textarea
             name="address"
             onChange={handleAddress}
             />
+        </div>
+        <div>
+          <button
+          onClick={handleSubmit}
+          >Save Email</button>
+          </div>
         </div>
         </div>
         </>

@@ -81,7 +81,10 @@ const ImageModal = ({passDown}) =>{
             </div><div><button
             onClick={(e)=>dispatch(imageDeleteFetch(image.id))}
             >Delete Image</button></div></span>)})}</div>
-            <button></button>
+        <button
+        className="imageButton"
+        onClick={()=>closeModal()}
+        >Close</button>
         </div>
         </>
     )

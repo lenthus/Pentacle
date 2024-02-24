@@ -5,7 +5,7 @@ import React from "react";
 const Splash = () => {
     return (
         <>
-        Hello From Splash
+        <div>Sign Up To Send Emails</div>
         </>
     )
 }

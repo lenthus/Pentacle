@@ -1,0 +1,26 @@
+.userStats {
+    display: flex;
+    flex-direction: column;
+}
+
+.userStats h4 {
+    font-size: 30px;
+}
+
+.quickLinks {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+}
+
+.quickLinks a {
+    font-size: 20px;
+    padding: 10px;
+}
+
+.homeBox {
+    display: flex;
+    justify-content: space-around;
+    background-color: rgb(225, 221, 221);
+}
