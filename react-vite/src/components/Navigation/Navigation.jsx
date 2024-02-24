@@ -36,9 +36,19 @@ function Navigation() {
       <ProfileButton className="profileButton" />
       </div>
 
-    </ div> :
+    </div> :
     <div className="notLoggedIn">
+      <div className="navFlexBox">
+      <div >
+        <h1 className="title">Pentacle Mail</h1>
+        <h3
+        style={{padding: 10}}
+        >As Above, So Below.</h3>
+      </div>
       <div>
+      <img src={pentacle} alt="pentacle" id="pentacle"/>
+      </div>
+      <div >
       <NavLink to='/Splash'>Home</NavLink>
       </div>
       <div>
@@ -47,7 +57,7 @@ function Navigation() {
       <div>
         <NavLink to='login'>Log In</NavLink>
       </div>
-    </div>
+    </div></div>
 
     }
 
