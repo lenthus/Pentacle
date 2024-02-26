@@ -17,6 +17,7 @@ const Group = ({user, contact, groups}) =>{
 
     const handleName = (e)=> setName(e.target.value)
     const handleGroupEdit = (e)=> setGroupEdit(e.target.value)
+    const groupReset =()=>setGroupEdit("")
 
     const handleSubmit =async (e) => {
         e.preventDefault()
@@ -43,13 +44,16 @@ const Group = ({user, contact, groups}) =>{
         onChange={handleGroupEdit}
         placeholder="Select a Group"
         >
+        {!groupEdit?<option key='blankKeyTwo' hidden value >Select a Group</option>:null}
         <option key='blankKey' hidden value >Select a Group</option>
         {groups?Object.values(groups).map(group =>(<option value={group.id}>{group.name}</option>)):placeholder="Create a Group"}
         </select>
         {groupEdit?(<OpenModalButton
         buttonClass={"fa-regular fa-pen-to-square"}
         // onButtonClick={handleCompleted}
-        modalComponent={<GroupModal group={groupEdit} groups={groups} user={user}/>}
+        onModalClose={()=>groupReset}
+        modalComponent={<GroupModal
+             group={groupEdit} groups={groups} user={user} setGroupEdit={setGroupEdit}/>}
         />):null}
         <form
          onSubmit={handleSubmit}

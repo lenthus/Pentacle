@@ -16,7 +16,7 @@ const AddContact = ({user,contacts,groups}) =>{
 
 
     const handleSubmit = (e) =>{
-        e.preventDefault()
+        // e.preventDefault()
         if (firstname.length <=1||lastname.length <=1){alert("First and Last Name Required")}
         if (email_address.length >= 1){
         const payload = {
@@ -42,13 +42,16 @@ const AddContact = ({user,contacts,groups}) =>{
     return(
         <><div className="AddContactBox">
         <h1>Add A New Contact</h1>
-        <form className="newContactForm" >
+        <form className="newContactForm"
+
+        >
         <h3>First Name</h3>
         <input
             type = "text"
             name = "First Name"
             defaultValue={firstname}
             onChange={handleFirstname}
+            onKeyDown={(e)=>e.key==='Enter'?e.preventDefault():null}
         ></input>
         <h3>Last Name</h3>
         <input
@@ -56,12 +59,14 @@ const AddContact = ({user,contacts,groups}) =>{
             name = "Last Name"
             defaultValue={lastname}
             onChange={handleLastname}
+            onKeyDown={(e)=>e.key==='Enter'?e.preventDefault():null}
         ></input>
         <h2>Email Address</h2>
         <input
             type = "text"
             name = "Email"
             defaultValue={email_address}
+            onKeyDown={(e)=>e.key==='Enter'?e.preventDefault():null}
             onChange={handleEmail}
         ></input>
          <div>

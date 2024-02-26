@@ -23,7 +23,7 @@ def seed():
         undo_users()
         # undo_contacts()
     seed_users()
-    seed_contacts()
+    # seed_contacts()
     seed_images()
     seed_emails()
     seed_history()
@@ -34,7 +34,7 @@ def seed():
 @seed_commands.command('undo')
 def undo():
     undo_users()
-    undo_contacts()
+    # undo_contacts()
     undo_images()
     undo_emails()
     undo_history()

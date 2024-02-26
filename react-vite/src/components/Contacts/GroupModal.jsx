@@ -7,7 +7,7 @@ import { groupDeleteFetch } from "../../redux/group";
 
 
 
-const GroupModal = ({group,groups,user}) =>{
+const GroupModal = ({group,groups,user,setGroupEdit}) =>{
     const [name, setName]=useState("")
     const dispatch = useDispatch()
     const groupEdit = useSelector((state) => state.groups[group]);
@@ -21,6 +21,7 @@ const GroupModal = ({group,groups,user}) =>{
         if (check === true){
         dispatch(groupDeleteFetch(group))
         closeModal()
+        setGroupEdit("")
         }
     }
     const handleName = (e)=> setName(e.target.value)

@@ -11,10 +11,10 @@ def seed_contacts():
     cont3 = Contact(
          user_id=3, email_address='test3.io', firstname='testMan3', lastname='tester3')
 
-    db.session.add(cont1)
-    db.session.add(cont2)
-    db.session.add(cont3)
-    db.session.commit()
+    # db.session.add(cont1)
+    # db.session.add(cont2)
+    # db.session.add(cont3)
+    # db.session.commit()
 
 
 # Uses a raw SQL query to TRUNCATE or DELETE the contacts table. SQLAlchemy doesn't
