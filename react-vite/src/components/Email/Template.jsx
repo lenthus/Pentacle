@@ -8,6 +8,7 @@ import { useState, useCallback, useEffect } from "react";
 import { TextareaHTMLAttributes } from "react";
 import { createEmailMaker } from "../../redux/email";
 import { useDispatch } from "react-redux";
+import {useNavigate, Navigate} from 'react-router-dom'
 
 
 
@@ -67,6 +68,7 @@ const Template = ({passDown}) =>{
     const [address, setAddress] = useState("")
     const [showErrors, setShowErrors] = useState(false)
     const dispatch = useDispatch()
+    const navigate = useNavigate();
     // const errorMessage = ["Email Incomplete for Following Reasons:"]
 
     const {user, contacts, groups, images, bColor, setBColor, groupEdit}=passDown
@@ -94,6 +96,7 @@ const Template = ({passDown}) =>{
                         }
 
         dispatch(createEmailMaker(payload))
+        navigate('../')
     }
     else {
         alert("Email Incomplete")
