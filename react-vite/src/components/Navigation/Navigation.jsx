@@ -48,14 +48,10 @@ function Navigation() {
       <div>
       <img src={pentacle} alt="pentacle" id="pentacle"/>
       </div>
-      <div >
+      <div className="Profile">
       <NavLink to='/Splash'>Home</NavLink>
-      </div>
-      <div>
-        <NavLink to='signup'>Get Started</NavLink>
-      </div>
-      <div>
-        <NavLink to='login'>Log In</NavLink>
+      <NavLink to='signup'>Get Started</NavLink>
+      <NavLink to='login'>Log In</NavLink>
       </div>
     </div></div>
 

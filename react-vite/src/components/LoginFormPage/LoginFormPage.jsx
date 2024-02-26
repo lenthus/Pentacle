@@ -55,6 +55,7 @@ function LoginFormPage() {
 
   return (
     <>
+    <div className="SignupFormBox">
       <h1>Log In</h1>
       {errors.length > 0 &&
         errors.map((message) => <p key={message}>{message}</p>)}
@@ -83,7 +84,7 @@ function LoginFormPage() {
 
       </form>
       <button onClick={handleDemoUser}>Demo User</button>
-    </>
+    </div></>
   );
 }
 

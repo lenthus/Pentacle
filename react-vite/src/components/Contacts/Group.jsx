@@ -56,6 +56,7 @@ const Group = ({user, contact, groups}) =>{
         >
         <div>
         <h3>Create a New Group</h3>
+
         <input
             type = "text"
             name = "name"
@@ -63,6 +64,7 @@ const Group = ({user, contact, groups}) =>{
             placeholder="Enter a Group Name"
             onChange={handleName}
         ></input>
+        <h3>(Press Enter After Typing Name)</h3>
         </div>
         </form>
         </div>
