@@ -19,6 +19,7 @@ const ContactList = ({contacts,user,groups}) =>{
         >
         <h1>Contacts for {user?.username} by Group</h1>
         <select
+        style={{width:'50%',height:30}}
         type = "dropdown"
         defaultValue=""
         onChange={handleGroupEdit}

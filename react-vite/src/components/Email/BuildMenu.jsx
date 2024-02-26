@@ -36,9 +36,11 @@ const BuildMenu = ({passDown}) =>{
 
     return (
         <>
-        <div>
-        <h2>Email Options</h2>
+
+        <div className="BuildBoxMenu">
+        <h2>Build Menu</h2>
         <div className="buttonContainer">
+        {Object.values(groups).length===0?<h1 style={{color:'red'}}>Create a Group and add Contacts before composing Email</h1>:null}
 
         <OpenModalButton
         buttonText={"Upload Images"}

@@ -70,6 +70,9 @@ const ImageGallery = ({passDown,banner, setBanner}) =>{
     return (
         <>
         <div className="imageGalleryBox">
+          <h1
+          style={{alignSelf:'center'}}
+          >Image Gallery</h1>
         {/* <ImageChooser passDown={passDown}/>
         <h2>Uploaded Images in Gallery</h2> */}
         {Object.values(images).length>=1?Object.values(images).map(image=>{
@@ -87,6 +90,7 @@ const ImageGallery = ({passDown,banner, setBanner}) =>{
                 }} />
             </div></span>)})}</div>
             <button
+            style={{height:'40px',margin:'20px'}}
             onClick={closeModal}
             >Use Image</button>
         </div>
