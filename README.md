@@ -1,6 +1,6 @@
 # MVP List
 
-Pentacle, a mail list wrapper designed to hold email clients, tied to specific users and integrating with AWS SES to send emails.
+Pentacle, a mail list wrapper designed to hold email clients, tied to specific users and integrating with SES to send emails.
 
 ## 1. New account creation, log in, log out, and guest/demo login
 
@@ -16,22 +16,22 @@ Pentacle, a mail list wrapper designed to hold email clients, tied to specific u
 * Logged in users can edit and delete their client lists.
 * Logged in users can only see their client List
 
-## 3. Emails (Full Crud)
+## 3. Emails (Partial Crud)
 
 * Logged in users can post emails and info such as images.
 * Logged in users can edit and delete their saved emails.
 * Completed email jobs will be added to previous email tables.
 
 
-## 5. Previous Emails (Partial Crud)
+## 5. Groups (Full Crud)
 
-* When an email is completed by a logged in user, a record is made of the email
-* Logged in users can Delete a record of a previous email.
-* Logged in users can view details of this record.
+* Users can create groups
+* Users can delete their groups
+* users can update groups
+* Users can add contacts to groups
 
 ## 5. Bonus Features
 
-* Integration with AWS SES
 * The ability to compose emails within the App
 
 ## Database Schema
